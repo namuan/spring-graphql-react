@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+
+# Stage 1: build
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /workspace
+COPY . .
+RUN mvn -B -DskipTests package
+
+# Stage 2: runtime
+FROM eclipse-temurin:21-jre AS runtime
+WORKDIR /app
+COPY --from=build /workspace/target/showroom-orchestrator-0.0.1-SNAPSHOT.jar /app/app.jar
+EXPOSE 8082
+ENV VEHICLE_SERVICE_URL=http://localhost:8081
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

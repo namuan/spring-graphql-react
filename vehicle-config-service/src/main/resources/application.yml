@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: vehicle-config-service
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:vehicle_config}
+    username: ${DB_USERNAME:vehicle_config}
+    password: ${DB_PASSWORD:vehicle_config}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+server:
+  port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

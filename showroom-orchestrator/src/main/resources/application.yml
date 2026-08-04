@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: showroom-orchestrator
+
+vehicle-service:
+  url: ${VEHICLE_SERVICE_URL:http://localhost:8081}
+  # Socket-level timeouts for the blocking RestClient downstream call.
+  connect-timeout: ${VEHICLE_CONNECT_TIMEOUT_MS:2000}
+  request-timeout: ${VEHICLE_REQUEST_TIMEOUT_MS:5000}
+
+# Optional dev CORS: leave SHOWROOM_CORS_ALLOWED_ORIGINS unset to disable CORS
+# (the React frontend reaches this service through a same-origin proxy in dev,
+# so CORS is not required). To allow direct cross-origin calls from a browser
+# during development, set e.g. SHOWROOM_CORS_ALLOWED_ORIGINS=http://localhost:5173
+showroom:
+  cors:
+    allowed-origins: ${SHOWROOM_CORS_ALLOWED_ORIGINS:}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

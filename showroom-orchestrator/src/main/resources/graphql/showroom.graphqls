@@ -1,0 +1,70 @@
+input ModelFilter {
+    brand: String
+    minBasePriceCents: Int
+    maxBasePriceCents: Int
+    minPowerPs: Int
+    maxPowerPs: Int
+    minTopSpeedKph: Int
+    maxTopSpeedKph: Int
+    minAccelerationS: Float
+    maxAccelerationS: Float
+    minSeats: Int
+    maxSeats: Int
+}
+
+type Query {
+    models(filter: ModelFilter): [VehicleModel!]!
+    model(id: ID!): VehicleModel
+    configuration(id: ID!): VehicleConfiguration
+}
+
+type Mutation {
+    createConfiguration(input: CreateConfigurationInput!): VehicleConfiguration!
+}
+
+type VehicleModel {
+    id: ID!
+    brand: String!
+    name: String!
+    modelYear: Int!
+    basePriceCents: Int!
+    description: String
+    engine: String!
+    powerPs: Int!
+    accelerationS: Float!
+    topSpeedKph: Int!
+    drivetrain: String!
+    rangeKm: Int
+    seats: Int!
+    trims: [Trim!]!
+    options: [VehicleOption!]!
+}
+
+type Trim {
+    id: ID!
+    name: String!
+    priceDeltaCents: Int!
+}
+
+type VehicleOption {
+    id: ID!
+    name: String!
+    category: String!
+    priceCents: Int!
+}
+
+type VehicleConfiguration {
+    id: ID!
+    model: VehicleModel!
+    trim: Trim!
+    options: [VehicleOption!]!
+    totalPriceCents: Int!
+    status: String!
+    createdAt: String!
+}
+
+input CreateConfigurationInput {
+    modelId: ID
+    trimId: ID
+    optionIds: [ID!]
+}

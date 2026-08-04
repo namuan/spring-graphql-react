@@ -1,0 +1,17 @@
+# Test profile: H2 in-memory database with JPA create-drop so the
+# PostgreSQL-specific Flyway migrations are never executed by tests.
+spring:
+  datasource:
+    url: jdbc:h2:mem:vehicle-config;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
