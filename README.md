@@ -14,6 +14,18 @@ The frontend only calls `/graphql`. The orchestrator is a thin BFF that calls
 the domain service over REST. The domain service owns all persistence and price
 validation.
 
+## Screenshots
+
+The public UI, captured while running the real Podman stack:
+
+| Collection | Vehicle configurator |
+| --- | --- |
+| ![Aureline vehicle collection](docs/screenshots/01-collection.png) | ![Vehicle configurator](docs/screenshots/02-configurator.png) |
+
+| Configured commission | Saved configuration |
+| --- | --- |
+| ![Configured commission](docs/screenshots/03-configured-commission.png) | ![Saved configuration](docs/screenshots/04-saved-configuration.png) |
+
 ## Requirements
 
 - Podman 5 or newer, with `podman machine` running on macOS
