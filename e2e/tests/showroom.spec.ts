@@ -18,7 +18,7 @@ import { test, expect } from '@playwright/test'
 //   vehicle-config-service/src/main/resources/db/migration/V2__seed_vehicle_catalog.sql
 //   vehicle-config-service/src/main/resources/db/migration/V4__add_vehicle_model_tech_specs.sql
 
-const BASE_URL = process.env.BASE_URL ?? 'http://127.0.0.1:8080'
+const BASE_URL = process.env.BASE_URL ?? 'http://127.0.0.1:9090'
 
 // Seeded catalog: brand 'Aster', models 'Vale' and 'Terra' are rendered as
 // cards whose Configure buttons carry the accessible names "Configure Vale"

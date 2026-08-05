@@ -14,7 +14,7 @@ ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 # --- overridable configuration (environment wins) ---------------------------
 POD_NAME="${POD_NAME:-showroom}"
-WEB_PORT="${WEB_PORT:-8080}"
+WEB_PORT="${WEB_PORT:-9090}"
 POSTGRES_IMAGE="${POSTGRES_IMAGE:-docker.io/library/postgres:17-alpine}"
 POSTGRES_DB="${POSTGRES_DB:-showroom}"
 POSTGRES_USER="${POSTGRES_USER:-showroom}"

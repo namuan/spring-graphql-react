@@ -4,7 +4,7 @@ A complete vehicle configurator built as a small layered system:
 
 ```text
 Browser
-  -> nginx + React/Vite (public port 8080)
+  -> nginx + React/Vite (public port 9090)
   -> Spring for GraphQL orchestrator (private port 8082)
   -> Spring Boot vehicle configuration service (private port 8081)
   -> PostgreSQL 17
@@ -38,7 +38,7 @@ No Compose provider is required. The scripts use Podman pods directly.
 
 ```bash
 ./scripts/stack-up.sh
-open http://127.0.0.1:8080
+open http://127.0.0.1:9090
 ```
 
 Stop the containers while preserving PostgreSQL data:
@@ -53,14 +53,14 @@ Delete the application data explicitly:
 PURGE_DATA=1 ./scripts/stack-down.sh
 ```
 
-If port 8080 is occupied, select another public port:
+If port 9090 is occupied, select another public port:
 
 ```bash
 WEB_PORT=18080 ./scripts/stack-up.sh
 ```
 
 The backend ports are private to the pod. The public GraphQL endpoint is
-`http://127.0.0.1:8080/graphql`.
+`http://127.0.0.1:9090/graphql`.
 
 ## Run the outside-in E2E test
 
@@ -107,7 +107,7 @@ npm ci
 npm run dev
 ```
 
-Vite proxies `/graphql` through the public BFF boundary on port 8080. For a
+Vite proxies `/graphql` through the public BFF boundary on port 9090. For a
 non-default stack port, set `VITE_GRAPHQL_URL` and enable the orchestrator's
 optional development CORS with `SHOWROOM_CORS_ALLOWED_ORIGINS`.
 

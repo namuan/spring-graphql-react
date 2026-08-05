@@ -5,7 +5,7 @@
 # 1. Builds images from the vehicle-config-service, showroom-orchestrator
 #    and frontend Containerfiles.
 # 2. Creates a pod named $POD_NAME (default: showroom) whose containers
-#    share localhost networking, publishing $WEB_PORT (default: 8080) to
+#    share localhost networking, publishing $WEB_PORT (default: 9090) to
 #    the frontend's container port 80. Backend ports remain private to the pod.
 # 3. Starts Postgres 17-alpine with database/user/password 'showroom'
 #    (overridable), a named volume, and a pg_isready healthcheck that is
