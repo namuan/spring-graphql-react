@@ -1,6 +1,6 @@
 package com.showroom.orchestrator.client;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import com.showroom.orchestrator.dto.CreateConfigurationRequest;
 import com.showroom.orchestrator.dto.ModelFilter;
 import com.showroom.orchestrator.dto.VehicleConfiguration;
@@ -42,10 +42,10 @@ public class VehicleServiceClient {
     private static final int MAX_BODY_SNIPPET = 300;
 
     private final RestClient restClient;
-    private final ObjectMapper objectMapper;
+    private final JsonMapper objectMapper;
 
     public VehicleServiceClient(@Qualifier("vehicleServiceRestClient") RestClient restClient,
-                                ObjectMapper objectMapper) {
+                                JsonMapper objectMapper) {
         this.restClient = restClient;
         this.objectMapper = objectMapper;
     }
